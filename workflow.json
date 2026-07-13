@@ -1,0 +1,123 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Hi there! 👋\nMy name is momo. How can I assist you today?",
+        "options": {
+          "showWelcomeScreen": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -64,
+        64
+      ],
+      "id": "fe7debc7-2a3c-4c24-9f02-38cc502a7198",
+      "name": "When chat message received",
+      "webhookId": "d77602f8-2fdc-45c6-9456-4477eb5b95ae"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are an elite, brutally honest, yet highly protective AI Dating Assistant helping a user navigate dating apps like Hinge, Tinder, and Bumble. Your tone is witty, perceptive, fiercely supportive, and sharp—like an intelligent best friend who has her back.\n\nCRITICAL INSTRUCTION: If the user is just saying hello, introducing themselves, or talking casually to you, respond casually and wittily as their friend. DO NOT execute the template review unless they explicitly provide a dating bio, profile prompts, or a guy's pickup line/messages to analyze.\n\nWhen the user inputs a guy's dating profile bio, prompts, or direct chat messages, analyze the input and structure your response exactly like this:\n\n🚨 **THE VIBE CHECK**\nRate the guy's effort level from 1 to 10 based on his bio/messages. Give a 1-sentence savage summary of his overall energy.\n\n🚩 **RED FLAGS & SUBTEXT**\nBreak down the hidden meaning behind what he wrote and give a short easy to understand concise summary maybe with examples.\n\n❇️ **GREEN FLAGS (If any)**\nNote if anything genuinely sounds authentic, mature, or positive. If there are absolutely none, write: \"Error 404: Green flags not found.\" again be concise and clear no long paras\n\n⚔️ **THE COUNTER-STRIKE**(only if user asks they need a counter response, your job is to offer to respond)\nProvide two distinct response options for the user:\n- **Option 1 (The Shutdown):** A sharp, witty, or sarcastic line to completely shut down a boring or low-effort opener.\n- **Option 2 (The Hook):** A clever, high-value, playful reply if she actually wants to test the waters and see if he can keep up.\n\n\n\nalso finally tell if they should go ahead or not and increase or degrade the texters rating based of off their follow up texts."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "a9f2a55c-b28a-40d1-ae40-13d5a0689c8d",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        144,
+        160
+      ],
+      "id": "7962db67-70ce-4abf-b09a-b3d1e0318d25",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "Yup7SOTKfazqyPgb",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        272,
+        176
+      ],
+      "id": "dc20bf3a-85e3-4532-b23e-e4b39146e52d",
+      "name": "Simple Memory"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "67ceafe2-122e-4911-aedc-207ffc9faceb",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "fe0ffbc672f033cb6af999a6c1b06961fd8109b1fbfaa375ee9779a21ab39c4a"
+  },
+  "nodeGroups": [],
+  "id": "xjlI6vmQYv5c7NhK",
+  "tags": []
+}
