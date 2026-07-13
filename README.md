@@ -6,7 +6,7 @@ A context-aware, highly conversational AI Agent built on **n8n** that serves as 
 
 ## 🚀 Live Demo
 Try out the web interface live here: 
-👉 `https://YOUR_GITHUB_USERNAME.github.io/project-cartier/` *(Replace with your actual live GitHub Pages URL)*
+👉 `https://github.com/mohakbanerjee/project-cartier-ai/tree/main` 
 
 ---
 
