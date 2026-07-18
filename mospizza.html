@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mo's Pizzeria | Premium Stone-Baked Masterpieces</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- n8n Chat Widget CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+    <style>
+        :root {
+            --bg-color: #0b0b0b;
+            --surface-color: #161616;
+            --primary-gold: #e0a96d;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            
+            /* n8n Chat Theme Overrides */
+            --n8n-chat-primary-color: #e0a96d !important;
+            --n8n-chat-background-color: #161616 !important;
+            --n8n-chat-text-color: #ffffff !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(11,11,11,1)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070') center/cover no-repeat;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Italiana', serif;
+            font-size: 5rem;
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
+
+        .cta-btn {
+            background-color: var(--primary-gold);
+            color: var(--bg-color);
+            padding: 14px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--text-main);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(224, 169, 109, 0.35);
+        }
+
+        /* Menu Section */
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Italiana', serif;
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .pizza-card {
+            background-color: var(--surface-color);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #252525;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pizza-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-gold);
+        }
+
+        .pizza-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .pizza-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .pizza-info h3 {
+            font-family: 'Italiana', serif;
+            font-size: 1.8rem;
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+        }
+
+        .pizza-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            height: 45px;
+            overflow: hidden;
+        }
+
+        .selector-group {
+            margin-bottom: 15px;
+        }
+
+        .selector-group label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--primary-gold);
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .pizza-select {
+            width: 100%;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid #333;
+            padding: 8px 12px;
+            border-radius: 6px;
+            outline: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            transition: border-color 0.2s;
+        }
+
+        .pizza-select:focus {
+            border-color: var(--primary-gold);
+        }
+
+        .card-footer {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #252525;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-tag {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .order-inline-btn {
+            background: transparent;
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-gold);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .order-inline-btn:hover {
+            background-color: var(--primary-gold);
+            color: var(--bg-color);
+        }
+
+        .waiter-banner {
+            background: linear-gradient(90deg, #161616, #221a12, #161616);
+            border: 1px dashed var(--primary-gold);
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+
+        .waiter-banner p {
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        .waiter-highlight {
+            color: var(--primary-gold);
+            font-weight: 600;
+        }
+
+        /* 🛠️ FIX: Force the chat container window to stay scaling within display viewpoints */
+        .n8n-chat-widget, 
+        div[class*="chat-layout"], 
+        div[class*="widget-container"],
+        div[class*="chat-window"] {
+            max-height: 80vh !important;
+            bottom: 90px !important;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6) !important;
+            border-radius: 16px !important;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.2rem; }
+            .section-title { font-size: 2.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Mo's Pizzeria</h1>
+        <p>Authentic, fire-baked culinary art. Customize your crust, choose your size, and let our staff prepare perfection.</p>
+        <button class="cta-btn" onclick="toggleChat()">Order via Luigi</button>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-container">
+        <h2 class="section-title">The Masterpieces</h2>
+        
+        <div class="menu-grid">
+            <!-- Pizza 1: Margherita -->
+            <div class="pizza-card" id="margherita">
+                <img src="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?q=80&w=1974" alt="Margherita Pizza" class="pizza-img">
+                <div class="pizza-info">
+                    <h3>Margherita</h3>
+                    <p class="pizza-desc">San Marzano tomatoes, fresh mozzarella, extra virgin olive oil, and fresh basil.</p>
+                    
+                    <div class="selector-group">
+                        <label>Size</label>
+                        <select class="pizza-select size-select" onchange="updatePrice('margherita')">
+                            <option value="Small" data-price="299">Small (8") - ₹299</option>
+                            <option value="Medium" data-price="449" selected>Medium (11") - ₹449</option>
+                            <option value="Large" data-price="599">Large (14") - ₹599</option>
+                        </select>
+                    </div>
+
+                    <div class="selector-group">
+                        <label>Crust</label>
+                        <select class="pizza-select crust-select">
+                            <option value="Classic">Classic Hand-Tossed</option>
+                            <option value="Thin">Thin & Crispy</option>
+                            <option value="Stuffed Crust">Gourmet Stuffed Crust (+₹99)</option>
+                        </select>
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="price-tag">₹449</span>
+                        <button class="order-inline-btn" onclick="orderPizza('Margherita', 'margherita')">Order</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pizza 2: Pepperoni -->
+            <div class="pizza-card" id="pepperoni">
+                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=1980" alt="Pepperoni Pizza" class="pizza-img">
+                <div class="pizza-info">
+                    <h3>Pepperoni</h3>
+                    <p class="pizza-desc">Loaded with crisp, smoky pepperoni cups and strings of melted mozzarella.</p>
+                    
+                    <div class="selector-group">
+                        <label>Size</label>
+                        <select class="pizza-select size-select" onchange="updatePrice('pepperoni')">
+                            <option value="Small" data-price="399">Small (8") - ₹399</option>
+                            <option value="Medium" data-price="549" selected>Medium (11") - ₹549</option>
+                            <option value="Large" data-price="749">Large (14") - ₹749</option>
+                        </select>
+                    </div>
+
+                    <div class="selector-group">
+                        <label>Crust</label>
+                        <select class="pizza-select crust-select">
+                            <option value="Classic">Classic Hand-Tossed</option>
+                            <option value="Thin">Thin & Crispy</option>
+                            <option value="Stuffed Crust">Gourmet Stuffed Crust (+₹99)</option>
+                        </select>
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="price-tag">₹549</span>
+                        <button class="order-inline-btn" onclick="orderPizza('Pepperoni', 'pepperoni')">Order</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pizza 3: BBQ Chicken -->
+            <div class="pizza-card" id="bbqchicken">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1981" alt="BBQ Chicken Pizza" class="pizza-img">
+                <div class="pizza-info">
+                    <h3>BBQ Chicken</h3>
+                    <p class="pizza-desc">Smoked chicken strips, red onions, tangy BBQ drizzle, and fresh cilantro.</p>
+                    
+                    <div class="selector-group">
+                        <label>Size</label>
+                        <select class="pizza-select size-select" onchange="updatePrice('bbqchicken')">
+                            <option value="Small" data-price="429">Small (8") - ₹429</option>
+                            <option value="Medium" data-price="599" selected>Medium (11") - ₹599</option>
+                            <option value="Large" data-price="799">Large (14") - ₹799</option>
+                        </select>
+                    </div>
+
+                    <div class="selector-group">
+                        <label>Crust</label>
+                        <select class="pizza-select crust-select">
+                            <option value="Classic">Classic Hand-Tossed</option>
+                            <option value="Thin">Thin & Crispy</option>
+                            <option value="Stuffed Crust">Gourmet Stuffed Crust (+₹99)</option>
+                        </select>
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="price-tag">₹599</span>
+                        <button class="order-inline-btn" onclick="orderPizza('BBQ Chicken', 'bbqchicken')">Order</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pizza 4: Mo's Special -->
+            <div class="pizza-card" id="mosspecial">
+                <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?q=80&w=1935" alt="Mo's Special Pizza" class="pizza-img">
+                <div class="pizza-info">
+                    <h3>Mo's Special</h3>
+                    <p class="pizza-desc">Our signature build. Exotic mushrooms, bell peppers, olives, and premium secret oils.</p>
+                    
+                    <div class="selector-group">
+                        <label>Size</label>
+                        <select class="pizza-select size-select" onchange="updatePrice('mosspecial')">
+                            <option value="Small" data-price="479">Small (8") - ₹479</option>
+                            <option value="Medium" data-price="649" selected>Medium (11") - ₹649</option>
+                            <option value="Large" data-price="849">Large (14") - ₹849</option>
+                        </select>
+                    </div>
+
+                    <div class="selector-group">
+                        <label>Crust</label>
+                        <select class="pizza-select crust-select">
+                            <option value="Classic">Classic Hand-Tossed</option>
+                            <option value="Thin">Thin & Crispy</option>
+                            <option value="Stuffed Crust">Gourmet Stuffed Crust (+₹99)</option>
+                        </select>
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="price-tag">₹649</span>
+                        <button class="order-inline-btn" onclick="orderPizza('Mo\'s Special', 'mosspecial')">Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Waiter Info Banner -->
+        <div class="waiter-banner">
+            <p>🛎️ Need to place your order? Meet <span class="waiter-highlight">Luigi</span>, our exclusive AI Italian Waiter down in the right corner! Simply tell him your customization selection, and he will send it directly to our ovens.</p>
+        </div>
+    </section>
+
+    <!-- n8n Chat Widget Initialization Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js" type="module"></script>
+
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        createChat({
+            // Updated with your exact active webhook URL from the screenshot
+            webhookUrl: 'http://localhost:5678/webhook/6fa3b39a-8387-4edb-a1c1-5fc398bdce4e/chat',
+            title: "Luigi 🇮🇹",
+            subtitle: "Mo's Pizzeria Waiter",
+            initialMessages: ["Ciao! I am Luigi, your personal waiter. 🍕 Tell me what configuration you've picked from the menu and your Email address, and I will instantly lock your order into the stone oven line!"],
+            placeholder: "Talk to Luigi...",
+            style: {
+                position: 'fixed',
+                bottom: '30px',
+                right: '30px',
+                zIndex: '9999'
+            }
+        });
+    </script>
+    <script>
+        function updatePrice(pizzaId) {
+            const card = document.getElementById(pizzaId);
+            const sizeSelect = card.querySelector('.size-select');
+            const priceTag = card.querySelector('.price-tag');
+            
+            const selectedOption = sizeSelect.options[sizeSelect.selectedIndex];
+            const basePrice = parseInt(selectedOption.getAttribute('data-price'));
+            
+            priceTag.innerText = '₹' + basePrice;
+        }
+
+        function orderPizza(pizzaName, pizzaId) {
+            const card = document.getElementById(pizzaId);
+            const size = card.querySelector('.size-select').value;
+            const crust = card.querySelector('.crust-select').value;
+            
+            toggleChat();
+            
+            setTimeout(() => {
+                // Injects prompt advice right to user via alert to tell Luigi smoothly
+                alert(`Perfect choice! Tell Luigi: "I want a ${size} ${pizzaName} with ${crust}."`);
+            }, 400);
+        }
+
+        function toggleChat() {
+            const chatButton = document.querySelector('.n8n-chat-toggle-button') || document.querySelector('[class*="toggle"]');
+            if (chatButton) chatButton.click();
+        }
+    </script>
+</body>
+</html>
