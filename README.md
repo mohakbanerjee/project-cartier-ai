@@ -32,6 +32,11 @@ The underlying AI Agent is governed by a strict structured routing prompt that e
 
 ---
 
+
+### 🍕 Pizza Factory AI
+A friendly Italian waiter AI that helps users customize and order pizzas.
+- [Try it here](https://mohakbanerjee.github.io/project-cartier-ai/mospizza.html)
+
 ## 📁 Repository Structure
 ```text
 ├── index.html       # The frontend interface utilizing n8n embedded chat CDN
